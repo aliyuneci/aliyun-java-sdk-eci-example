@@ -48,24 +48,6 @@ public class EciTest20180808 {
         configFileToPath.setContent("content");
         volume1.setConfigFileVolumeConfigFileToPaths(Collections.singletonList(configFileToPath));
 
-        /**
-         * volumes
-         * volume2: NFSVolume
-         */
-        Volume volume2 = new Volume();
-        volume2.setType("NFSVolume");
-        volume2.setName("default-volume2-nfs");
-        volume2.setNFSVolumePath("");
-        volume2.setNFSVolumeServer("");
-        volume2.setNFSVolumeReadOnly(false);
-
-        /**
-         * volumes
-         * volume3: EmptyDirVolume
-         */
-        Volume volume3 = new Volume();
-        volume3.setType("EmptyDirVolume");
-        volume3.setName("default-volume3-empty");
 
         //securityContext
         SecurityContext securityContext = new SecurityContext();
@@ -118,18 +100,6 @@ public class EciTest20180808 {
         container2.setCpu(1.0F);
         container2.setImagePullPolicy("Always");
 
-        VolumeMount volumeMount2 = new VolumeMount();
-        volumeMount2.setName("default-volume2-nfs");
-        volumeMount2.setMountPath("/pod-data");
-        volumeMount2.setReadOnly(false);
-
-        VolumeMount volumeMount3 = new VolumeMount();
-        volumeMount3.setName("default-volume3-empty");
-        volumeMount3.setMountPath("/usr/share");
-        volumeMount3.setReadOnly(false);
-
-        container2.setVolumeMounts(Arrays.asList(volumeMount2, volumeMount3));
-
         //dns config
         DnsConfig dnsConfig = new DnsConfig();
         dnsConfig.setNameServers(Arrays.asList("8.8.8.8"));
@@ -141,7 +111,7 @@ public class EciTest20180808 {
 
 
         createContainerGroupRequest.setDnsConfig(dnsConfig);
-        createContainerGroupRequest.setVolumes(Arrays.asList(volume1, volume2, volume3));
+        createContainerGroupRequest.setVolumes(Arrays.asList(volume1));
         createContainerGroupRequest.setContainers(Arrays.asList(container, container2));
 
         return EciBaseHelper.doAction(createContainerGroupRequest);
