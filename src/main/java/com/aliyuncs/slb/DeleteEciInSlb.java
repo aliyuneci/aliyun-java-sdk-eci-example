@@ -40,6 +40,7 @@ public class DeleteEciInSlb {
             SetBackendServersResponse.BackendServer slbBackendServer = new SetBackendServersResponse.BackendServer();
             slbBackendServer.setServerId(eciId);
             slbBackendServer.setWeight("100");
+            slbBackendServer.setType("eci");
             backendServers.add(slbBackendServer);
         });
 
