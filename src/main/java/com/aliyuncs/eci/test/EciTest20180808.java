@@ -114,7 +114,7 @@ public class EciTest20180808 {
         createContainerGroupRequest.setVolumes(Arrays.asList(volume1));
         createContainerGroupRequest.setContainers(Arrays.asList(container, container2));
 
-        return EciBaseHelper.doAction(createContainerGroupRequest);
+        return EciBaseHelper.getAcsResponse(createContainerGroupRequest);
     }
 
     public static DescribeContainerGroupsResponse describeContainerGroups(String[] containerGroupIds) {
@@ -125,7 +125,7 @@ public class EciTest20180808 {
         describeContainerGroupsRequest.setStatus("Running");
         describeContainerGroupsRequest.setContainerGroupIds(JSONObject.toJSONString(containerGroupIds));
 
-        return EciBaseHelper.doAction(describeContainerGroupsRequest);
+        return EciBaseHelper.getAcsResponse(describeContainerGroupsRequest);
     }
 
 

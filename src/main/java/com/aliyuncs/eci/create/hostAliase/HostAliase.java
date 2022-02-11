@@ -26,6 +26,6 @@ public class HostAliase {
 
         createContainerGroupRequest.setHostAliases(Arrays.asList(hostAliase));
 
-        return EciBaseHelper.doAction(createContainerGroupRequest);
+        return EciBaseHelper.getAcsResponse(createContainerGroupRequest);
     }
 }

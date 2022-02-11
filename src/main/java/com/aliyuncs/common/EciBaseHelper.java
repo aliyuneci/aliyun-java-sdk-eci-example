@@ -7,6 +7,7 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.RpcAcsRequest;
 import com.aliyuncs.eci.model.v20180808.CreateContainerGroupRequest;
 import com.aliyuncs.exceptions.ClientException;
+import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.HttpResponse;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
@@ -30,7 +31,8 @@ public class EciBaseHelper {
      * @param <T>
      * @return AcsResponse 返回请求对应的AcsResponse对象
      */
-    public static <T extends AcsResponse> T doAction(AcsRequest<T> request) {
+    @Deprecated
+    public static <T extends AcsResponse> T getAcsResponse(AcsRequest<T> request) {
         DefaultAcsClient client = null;
         IClientProfile iClientProfile = DefaultProfile.getProfile(EciTestConstant.REGION_ID, EciTestConstant.AK_ID,
                 EciTestConstant.AK_SECRET);
@@ -54,7 +56,8 @@ public class EciBaseHelper {
      * @param request
      * @return 返回json格式
      */
-    public static HttpResponse doAction2(RpcAcsRequest request) {
+    @Deprecated
+    public static HttpResponse doAction(RpcAcsRequest request) {
         IAcsClient iAcsClient = null;
         IClientProfile iClientProfile = DefaultProfile.getProfile(EciTestConstant.REGION_ID, EciTestConstant.AK_ID,
                 EciTestConstant.AK_SECRET);
@@ -77,5 +80,45 @@ public class EciBaseHelper {
             e.printStackTrace();
         }
         return response;
+    }
+
+
+    public static <T extends AcsResponse> HttpResponse doAction(IAcsClient client, AcsRequest<T> request)
+            throws ClientException, ServerException {
+        long startTime = System.currentTimeMillis();
+        Throwable exception = null;
+        HttpResponse result = null;
+        try {
+            result = client.doAction(request);
+        } catch (ServerException e) {
+            exception = e;
+            throw e;
+        } catch (ClientException e) {
+            exception = e;
+            throw e;
+        } finally {
+            long endTime = System.currentTimeMillis();
+        }
+        return result;
+    }
+
+
+    public static <T extends AcsResponse> T getAcsResponse(IAcsClient client, AcsRequest<T> request)
+            throws ServerException, ClientException {
+        long startTime = System.currentTimeMillis();
+        Throwable exception = null;
+        T result = null;
+        try {
+            result = client.getAcsResponse(request);
+        } catch (ServerException e) {
+            exception = e;
+            throw e;
+        } catch (ClientException e) {
+            exception = e;
+            throw e;
+        } finally {
+            long endTime = System.currentTimeMillis();
+        }
+        return result;
     }
 }

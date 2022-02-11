@@ -35,6 +35,6 @@ public class EmptyDir {
 
         createContainerGroupRequest.setContainers(Arrays.asList(container));
 
-        return EciBaseHelper.doAction(createContainerGroupRequest);
+        return EciBaseHelper.getAcsResponse(createContainerGroupRequest);
     }
 }

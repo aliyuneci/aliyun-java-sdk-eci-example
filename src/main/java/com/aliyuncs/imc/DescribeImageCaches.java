@@ -11,6 +11,6 @@ public class DescribeImageCaches {
         describeImageCachesRequest.setRegionId(regionId);
         describeImageCachesRequest.setImageCacheId(imageCacheId);
 
-        return EciBaseHelper.doAction(describeImageCachesRequest);
+        return EciBaseHelper.getAcsResponse(describeImageCachesRequest);
     }
 }

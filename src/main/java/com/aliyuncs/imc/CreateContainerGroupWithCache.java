@@ -26,7 +26,7 @@ public class CreateContainerGroupWithCache {
 
         createContainerGroupRequest.setAutoMatchImageCache(true);
 
-        return EciBaseHelper.doAction(createContainerGroupRequest);
+        return EciBaseHelper.getAcsResponse(createContainerGroupRequest);
     }
 
 }

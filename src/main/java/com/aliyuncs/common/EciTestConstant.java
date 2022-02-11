@@ -11,7 +11,7 @@ public class EciTestConstant {
 
     public final static String AK_ID = "XXX";
     public final static String AK_SECRET = "XXX";
-    public final static String REGION_ID = "cn-beijing";
+    public final static String REGION_ID = "cn-hangzhou";
     /**
      * 相同VPC下的交换机和安全组
      */

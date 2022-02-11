@@ -12,7 +12,7 @@ public class ExecContainerCommand {
         execContainerCommandRequest.setContainerGroupId(containerGroupId);
         execContainerCommandRequest.setContainerName(containerName);
         execContainerCommandRequest.setCommand(command);
-        return EciBaseHelper.doAction(execContainerCommandRequest);
+        return EciBaseHelper.getAcsResponse(execContainerCommandRequest);
 
     }
 }

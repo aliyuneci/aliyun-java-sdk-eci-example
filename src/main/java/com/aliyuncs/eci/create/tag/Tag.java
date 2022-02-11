@@ -27,6 +27,6 @@ public class Tag {
         tag.setValue("v1");
         createContainerGroupRequest.setTags(Arrays.asList(tag));
 
-        return EciBaseHelper.doAction(createContainerGroupRequest);
+        return EciBaseHelper.getAcsResponse(createContainerGroupRequest);
     }
 }

@@ -41,6 +41,6 @@ public class ConfigFile {
 
         createContainerGroupRequest.setContainers(Arrays.asList(container));
 
-        return EciBaseHelper.doAction(createContainerGroupRequest);
+        return EciBaseHelper.getAcsResponse(createContainerGroupRequest);
     }
 }

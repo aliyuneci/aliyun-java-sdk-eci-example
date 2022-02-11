@@ -12,6 +12,6 @@ public class Price {
         describeContainerGroupPriceRequest.setRegionId(regionId);
         describeContainerGroupPriceRequest.setCpu(cpu);
         describeContainerGroupPriceRequest.setMemory(mem);
-        return EciBaseHelper.doAction2(describeContainerGroupPriceRequest);
+        return EciBaseHelper.doAction(describeContainerGroupPriceRequest);
     }
 }

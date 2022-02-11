@@ -20,6 +20,6 @@ public class CreateImageCache {
         createImageCacheRequest.setImageCacheSize(25);
         createImageCacheRequest.setRetentionDays(7);
 
-        return EciBaseHelper.doAction(createImageCacheRequest);
+        return EciBaseHelper.getAcsResponse(createImageCacheRequest);
     }
 }
